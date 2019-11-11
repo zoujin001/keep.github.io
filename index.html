@@ -200,7 +200,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-11 17:15:33 / 修改时间：22:09:56" itemprop="dateCreated datePublished" datetime="2019-11-11T17:15:33+08:00">2019-11-11</time>
+              <time title="创建时间：2019-11-11 17:15:33 / 修改时间：22:17:01" itemprop="dateCreated datePublished" datetime="2019-11-11T17:15:33+08:00">2019-11-11</time>
             </span>
 
           
@@ -214,19 +214,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1 安装环境"></a>1 安装环境</h1><p>本文使用的系统环境为：centos7<br>Hexo涉及需要安装的环境如下：Node.js、Hexo、git</p>
-<h2 id="1-1-安装-Node-js"><a href="#1-1-安装-Node-js" class="headerlink" title="1.1 安装 Node.js"></a>1.1 安装 Node.js</h2><ol>
+          <h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>本文使用的系统环境为：centos7<br>Hexo涉及需要安装的环境如下：Node.js、Hexo、git</p>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><ol>
 <li>首先安装wget  (如果已经安装了可以跳过该步) ：<br/> <code>yum install -y wget</code><p></li>
 <li>下载nodejs最新的bin包：<br/>可以在下载页面<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a>中找到需要的版本的下载地址。然后执行指令<br/><code>wget https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-x64.tar.xz</code><p></li>
 <li>解压包，依次执行：<br/><code>xz -d node-v12.13.0-linux-x64.tar.xz</code><br/><code>tar -xf  node-v12.13.0-linux-x64.tar</code><p></li>
 <li>部署bin文件：<br/>先确认你nodejs的路径，我这里的路径为 ~/node-v9.3.0-linux-x64/bin。确认后依次执行<br/><code>ln -s ~/node-v9.3.0-linux-x64/bin/node /usr/bin/node</code><br/><code>ln -s ~/node-v9.3.0-linux-x64/bin/npm /usr/bin/npm</code><br/><code>ln -s ~/node-v9.3.0-linux-x64/bin/npm /usr/bin/npx</code><br/>注意ln指令用于创建关联（类似与Windows的快捷方式）必须给全路径，否则可能关联错误。<p></li>
 <li>测试：<br/><code>node -v</code><br/><code>npm</code><p></li>
 </ol>
-<h2 id="1-2-安装-Hexo"><a href="#1-2-安装-Hexo" class="headerlink" title="1.2 安装 Hexo"></a>1.2 安装 Hexo</h2><ol>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><ol>
 <li>接下来就需要安装 Hexo 了，这是一个博客框架，Hexo 官方还提供了一个命令行工具，用于快速创建项目、页面、编译、部署 Hexo 博客，所以在这之前我们需要先安装 Hexo 的命令行工具。命令如下：<p><code>npm install -g hexo-cli</code><p> </li>
-<li>输入以下命令测试是否安装成功<br/><code>hexo</code><br/><img src="https://img-blog.csdnimg.cn/2019111118052834.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><h1 id="2-初始化项目"><a href="#2-初始化项目" class="headerlink" title="2 初始化项目"></a>2 初始化项目</h1></li>
+<li>输入以下命令测试是否安装成功<br/><code>hexo</code><br/><img src="https://img-blog.csdnimg.cn/2019111118052834.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><h1 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h1></li>
 </ol>
-<h2 id="2-1-初始化并启动项目"><a href="#2-1-初始化并启动项目" class="headerlink" title="2.1 初始化并启动项目"></a>2.1 初始化并启动项目</h2><p>接下来我们使用 Hexo 的命令行创建一个项目，并将其在本地跑起来，整体跑通看看。</p>
+<h2 id="初始化并启动项目"><a href="#初始化并启动项目" class="headerlink" title="初始化并启动项目"></a>初始化并启动项目</h2><p>接下来我们使用 Hexo 的命令行创建一个项目，并将其在本地跑起来，整体跑通看看。</p>
 <ol>
 <li>在 /usr/local 目录下创建项目：keep为项目名称 <p> <code>cd /usr/local</code><br/><code>hexo init keep</code><p>这样在keep文件夹下就会出现Hexo的初始化文件</li>
 <li>进入keep文件夹，执行下面命令，生成HTML代码：<br/><code>hexo generate</code><p><br>可以看到，在keep文件夹下生成了public文件夹，里面包含有 js、css、font 等内容</li>
@@ -234,7 +234,7 @@
 <li>访问上图红框的链接，如果不是在本机，则将localhost换成ip地址<br><img src="https://img-blog.csdnimg.cn/20191111215214181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
 <li>这里存在一个问题，通过以上方式（<code>hexo serve</code>）启动后，如果此时ssh断开、或者ctrl + c退出了，那么hexo进程也会退出。那么通过以下方式解决该问题：pm2来管理hexo进程</li>
 </ol>
-<h2 id="2-2-pm2管理hexo进程"><a href="#2-2-pm2管理hexo进程" class="headerlink" title="2.2 pm2管理hexo进程"></a>2.2 pm2管理hexo进程</h2><ol>
+<h2 id="pm2管理hexo进程"><a href="#pm2管理hexo进程" class="headerlink" title="pm2管理hexo进程"></a>pm2管理hexo进程</h2><ol>
 <li><p>在博客根目录下创建 hexo_run.js 文件 <br/> <code>touch hexo_run.js</code></p>
 </li>
 <li><p>添加以下内容 </p>
