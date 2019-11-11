@@ -5,9 +5,9 @@
   <subtitle>一年java啥都懂，就是不精通</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://keep.github.io/"/>
   <updated>2019-11-11T07:32:11.908Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://keep.github.io/</id>
   
   <author>
     <name>keep</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/11/11/hello-world/"/>
-    <id>http://yoursite.com/2019/11/11/hello-world/</id>
+    <link href="http://keep.github.io/2019/11/11/hello-world/"/>
+    <id>http://keep.github.io/2019/11/11/hello-world/</id>
     <published>2019-11-11T07:32:11.908Z</published>
     <updated>2019-11-11T07:32:11.908Z</updated>
     
