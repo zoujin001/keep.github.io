@@ -14,26 +14,52 @@ Hexo涉及需要安装的环境如下：Node.js、Hexo、git
 	```
 
  2. 下载nodejs最新的bin包：<br/>可以在下载页面[https://nodejs.org/en/download/](https://nodejs.org/en/download/)中找到需要的版本的下载地址。然后执行指令
-```bash
-wget https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-x64.tar.xz
-```
+	```bash
+	wget https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-x64.tar.xz
+	```
 
- 3. 解压包，依次执行：<br/>```xz -d node-v12.13.0-linux-x64.tar.xz```<br/>```tar -xf  node-v12.13.0-linux-x64.tar```<p>
- 4. 部署bin文件：<br/>先确认你nodejs的路径，我这里的路径为 ~/node-v9.3.0-linux-x64/bin。确认后依次执行<br/>```ln -s ~/node-v9.3.0-linux-x64/bin/node /usr/bin/node```<br/>```ln -s ~/node-v9.3.0-linux-x64/bin/npm /usr/bin/npm```<br/>```ln -s ~/node-v9.3.0-linux-x64/bin/npm /usr/bin/npx```<br/>注意ln指令用于创建关联（类似与Windows的快捷方式）必须给全路径，否则可能关联错误。<p>
+ 3. 解压包，依次执行：
+	```bash
+	xz -d node-v12.13.0-linux-x64.tar.xz
+	tar -xf  node-v12.13.0-linux-x64.tar
+	```
+
+ 
+ 4. 部署bin文件：<br/>先确认你nodejs的路径，我这里的路径为 ~/node-v12.13.0-linux-x64/bin。确认后依次执行。注意ln指令用于创建关联（类似与Windows的快捷方式）必须给全路径，否则可能关联错误。<p>
+	```bash
+	ln -s ~/node-v12.13.0-linux-x64/bin/node /usr/bin/node
+	ln -s ~/node-v12.13.0-linux-x64/bin/npm /usr/bin/npm
+	ln -s ~/node-v12.13.0-linux-x64/bin/npm /usr/bin/npx
+	```
+
  5. 测试：<br/>```node -v```<br/>```npm```<p>
 
 ## 安装 Hexo
 
- 1. 接下来就需要安装 Hexo 了，这是一个博客框架，Hexo 官方还提供了一个命令行工具，用于快速创建项目、页面、编译、部署 Hexo 博客，所以在这之前我们需要先安装 Hexo 的命令行工具。命令如下：<p>```npm install -g hexo-cli```<p> 
+ 1. 接下来就需要安装 Hexo 了，这是一个博客框架，Hexo 官方还提供了一个命令行工具，用于快速创建项目、页面、编译、部署 Hexo 博客，所以在这之前我们需要先安装 Hexo 的命令行工具。命令如下：
+	```bash
+	npm install -g hexo-cli
+	```
+
+ 
  2. 输入以下命令测试是否安装成功<br/>```hexo```<br/>![在这里插入图片描述](https://img-blog.csdnimg.cn/2019111118052834.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70)
 
 # 初始化项目
 接下来我们使用 Hexo 的命令行创建一个项目，并将其在本地跑起来，整体跑通看看。
 ## 初始化并启动项目
 
- 1. 在 /usr/local 目录下创建项目：keep为项目名称 <p> ```cd /usr/local```<br/>```hexo init keep```<p>这样在keep文件夹下就会出现Hexo的初始化文件
- 2. 进入keep文件夹，执行下面命令，生成HTML代码：<br/>```hexo generate```<p>
+ 1. 在 /usr/local 目录下创建项目：keep为项目名称 。这样在keep文件夹下就会出现Hexo的初始化文件
+	```bash
+	cd /usr/local
+	hexo init keep
+	```
+ 
+ 2. 进入keep文件夹，执行下面命令，生成HTML代码：
 可以看到，在keep文件夹下生成了public文件夹，里面包含有 js、css、font 等内容
+	```bash
+	hexo generate
+	```
+
  3. 启动Hexo：<p>```hexo serve```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191111214959707.png)
  4. 访问上图红框的链接，如果不是在本机，则将localhost换成ip地址
@@ -42,47 +68,97 @@ wget https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-x64.tar.xz
 
 ## pm2管理hexo进程
 
- 1. 在博客根目录下创建 hexo_run.js 文件 <br/> ```touch hexo_run.js```
+ 1. 在博客根目录下创建 hexo_run.js 文件
+	```bash
+	touch hexo_run.js
+	```
+
+ 
  2. 添加以下内容 
-```javascript
-	const { exec } = require('child_process')
-	exec('hexo server',(error, stdout, stderr) => {
-	        if(error){
-                console.log('exec error: ${error}')
-                return
-	        }
-	        console.log('stdout: ${stdout}');
-	        console.log('stderr: ${stderr}');
-	})
-```
+	```javascript
+		const { exec } = require('child_process')
+		exec('hexo server',(error, stdout, stderr) => {
+		        if(error){
+	                console.log('exec error: ${error}')
+	                return
+		        }
+		        console.log('stdout: ${stdout}');
+		        console.log('stderr: ${stderr}');
+		})
+	```
 
  3. 安装pm2
-```powershell
-npm install -g pm2
-```
+	```powershell
+	npm install -g pm2
+	```
 	
  4. 启动博客
-```powershell
-pm2 start hexo_run
-```
+	```powershell
+	pm2 start hexo_run
+	```
 	
 	
 
  5. 关闭
-```powershell
-pm2 stop hexo_run
-```
+	```powershell
+	pm2 stop hexo_run
+	```
 
 	
 
  6. 重启
-```powershell
-pm2 restart hexo_run
-```
+	```powershell
+	pm2 restart hexo_run
+	```
 
-## 插入链接与图片
+# 部署
+接下来我们来将这个初始化的博客进行一下部署，放到 GitHub Pages 上面验证一下其可用性。成功之后我们可以再进行后续的修改，比如修改主题、修改页面配置等等。Hexo 已经给我们提供一个命令，利用它我们可以直接将博客一键部署，不需要手动去配置服务器或进行其他的各项配置。
 
-链接: [link](https://mp.csdn.net).
+ 1. 打开根目录下的 _config.yml 文件，找到 Deployment 这个地方，把刚才新建的 Repository 的地址贴过来，然后指定分支为 master 分支，最终修改为如下内容：
+	```yaml
+	# Deployment
+	## Docs: https://hexo.io/docs/deployment.html
+	deploy:
+	  type: git
+	  repo: git@github.com:zoujin001/keep.github.io.git
+	  branch: master
+	```
+	注意：我这里git地址使用的是ssh方式，如果使用的是https方式的，请切换为ssh方式，点击 “**Use SSH**” 即可
+	![在这里插入图片描述](https://img-blog.csdnimg.cn/20191112113233309.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191112113307543.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70)
+
+ 2. 安装Git插件
+	```bash
+	npm install hexo-deployer-git --save
+	```
+	如果不安装会报如下错误：
+	```bash
+	Deployer not found: git
+	```
+ 3. 配置站点访问地址：编辑项目根目录下的 _config.yml 文件，找到 # URL 开始的这段，根据你的Github地址配置
+	```yaml
+	# URL
+	## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+	url: https://github.com/zoujin001/keep.github.io
+	root: /keep.github.io/
+	permalink: :year/:month/:day/:title/
+	permalink_defaults:
+	pretty_urls:
+	  trailing_index: true # Set to false to remove trailing index.html from permalinks
+	```
+	说明：url：Github仓库地址
+	![在这里插入图片描述](https://img-blog.csdnimg.cn/20191112114614913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70)
+			  <br/>
+			   root：Github项目访问地址，这里配上仓库名称就行了<br/>		   ![在这里插入图片描述](https://img-blog.csdnimg.cn/201911121146508.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70)
+	<br/>
+ 4. 在项目根目录下执行部署命令
+	```bash
+	hexo deploy
+	```
+	注意：如果这里部署不上去的，请在机器上生成SSH密钥，然后配置在Github上。具体操作参考链接：[Github配置ssh key](https://blog.csdn.net/u013778905/article/details/83501204)
+ 
+ 5. 登录Github，进入对应仓库->点击Settings->GitHub Pages，下图标红的就是博客的访问地址
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191112114919959.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3OTI5Njg2,size_16,color_FFFFFF,t_70)
 
 图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw)
 
